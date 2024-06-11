@@ -1,0 +1,29 @@
+/* Nastavení pro kontejner */
+.login-layout {
+    position: relative;
+    width: 100%;
+    height: 100dvh; /* nebo 100%, pokud chcete plné výšky stránky */
+    overflow: hidden;
+  }
+  
+  /* Styl pozadí */
+  .background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1; /* umístí pozadí za obsah */
+    object-fit: cover; /* pokud používáte obrázek jako pozadí */
+  }
+  
+  /* Styl obsahu */
+  .content {
+    z-index: 1; /* umístí obsah před pozadí */
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center; /* Horizontální zarovnání obsahu */
+    align-items: center; /* Vertikální zarovnání obsahu */
+  }
+  
