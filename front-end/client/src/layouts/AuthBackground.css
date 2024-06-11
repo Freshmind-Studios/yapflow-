@@ -1,0 +1,10 @@
+
+#canvas{
+    margin:0 auto;
+    display:block;
+    filter:url('#shadowed-goo');
+}
+
+svg{
+  display:none;
+}
