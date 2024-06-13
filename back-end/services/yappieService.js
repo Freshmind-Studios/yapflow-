@@ -4,7 +4,7 @@ module.exports = {
     getYappieById: async (yappieId) => {
         return await Yappie.findById(yappieId);
     },
-    
+
     createYappie: async (users) => {
         const yappie = await Yappie.create({ users });
 
