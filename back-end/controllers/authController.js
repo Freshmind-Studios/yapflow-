@@ -32,6 +32,6 @@ module.exports = {
   logout: async (req, res) => {
     req.session.destroy((err) => res.send({ valid: !err }));
   },
-  getStatus: async (req, res) => res.send({ valid: true }),
-  getSession: async (req, res) => res.send({ sessionId: req.session.id })
+  getStatus: async (req, res) => res.send({ valid: true, userId: req.session.userId}),
+  getSession: async (req, res) => res.send({ sessionId: req.session.id, valid: true })
 };

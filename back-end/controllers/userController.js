@@ -25,6 +25,6 @@ module.exports = {
       return res.send({ valid: false });
     }
 
-    return res.send({ userId: user.userId });
+    return res.send({ userId: user.userId, valid: true });
   },
 };

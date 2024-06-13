@@ -13,7 +13,8 @@ module.exports = {
                     await UserService.updateUser(req.session.userId, { lastActive: Date.now() });
                     break;
                 case "yappie_create":
-                    await YappieService.createYappie([req.session.userId, msg.users]);
+                    const {yappieId} = await YappieService.createYappie([req.session.userId, msg.users]);
+                    await UserService.updateUser(req.session.userId, { yappieId });
                     break;
                 default:
                     break;

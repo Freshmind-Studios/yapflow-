@@ -19,6 +19,9 @@ const userSchema = new mongoose.Schema({
     required: true,
     unique: true,
   },
+  yappies: {
+    type: Array
+  }
 });
 
 module.exports = mongoose.model("User", userSchema);
