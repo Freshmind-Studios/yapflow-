@@ -1,6 +1,6 @@
 const Profile = () => {
     return <>
-        <div className="block"></div>
+        <div className="block profile"></div>
     </>
 }
 

@@ -1,6 +1,7 @@
 const Yap = () => {
     return <>
-        <div className="block"></div>
+        <div className="block yap"></div>
+        <img src="" alt="" />
     </>
 }
 

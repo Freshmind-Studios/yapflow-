@@ -1,6 +1,6 @@
 const ChatTools = () => {
     return <>
-        <div className="block"></div>
+        <div className="chat-tools"></div>
     </>
 }
 

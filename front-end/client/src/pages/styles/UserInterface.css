@@ -1,0 +1,30 @@
+#user-interface {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    padding: 5px;
+    box-sizing: border-box;
+}
+
+.container-top {
+    display: flex;
+    height: calc(100% - 80px);
+}
+
+.container-bottom {
+    
+}
+
+.yappies-selector {
+    width: 25%;
+}
+
+.yaps-selector {
+    height: 50px;
+}
+
+.chat {
+    width: 100%;
+}

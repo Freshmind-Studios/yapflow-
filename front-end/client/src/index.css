@@ -1,10 +1,10 @@
 * {
   /* proměné, do ktrých ukládáme globální barvy */
-  --primary-color: #001218;
+  --primary-color: #002633;
 
   --secondary-color: #EFF4F5;
 
-  --tertiary-color: #002633;
+  --tertiary-color: #001218;
 
   --quaternary-color: #004A63;
 
@@ -43,7 +43,7 @@ body {
   backdrop-filter: blur(20px);
   border-radius: 10px;
   padding: 10px;
-  margin: 10px;
+  margin: 5px;
 }
 
 input,

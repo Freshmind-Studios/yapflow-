@@ -15,8 +15,8 @@ const AuthService = {
   status: async () => {
     axios.defaults.withCredentials = true;
     const response = await axios.get(`${URL}/auth/status`);
-    const { valid } = response.data;
-    return { valid }
+    const { valid, userId } = response.data;
+    return { valid, userId }
   },
   // metoda pro registraci nového uživatele
   register: async (tag, password, passwordValidation) => {
