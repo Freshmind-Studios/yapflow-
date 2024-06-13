@@ -9,8 +9,8 @@ const UserInterface = () => {
     useEffect(() => {
         const fetchData = async () => {
             const { valid } = await AuthService.status();
-            if (valid) {
-                navigate("/");
+            if (!valid) {
+                navigate("/auth");
             
             } 
 

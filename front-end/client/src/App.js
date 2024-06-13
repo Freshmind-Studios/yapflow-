@@ -8,16 +8,13 @@ import UserSettings from "./pages/UserSettings";
 // import Layoutů
 import LoginLayout from "./layouts/AuthLayout";
 
-import Actions from './Actions'
-
 
 
 const App = () => {
   return <>
     <BrowserRouter>
-    
       <Routes>
-        <Route index element={<><UserInterface /> <Actions></Actions> </>}/>
+        <Route index element={<UserInterface />}/>
         <Route path="/auth" element={<LoginLayout />} >
           <Route path="/auth" element={<AuthPage />} />
         </Route>
