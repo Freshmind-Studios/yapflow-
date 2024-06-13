@@ -1,6 +1,6 @@
 const Canvas = () => {
     return <>
-        <div class="canvas">
+        <div className="canvas">
 
         </div>
     </>

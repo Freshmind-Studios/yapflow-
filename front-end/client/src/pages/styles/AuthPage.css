@@ -82,15 +82,6 @@
     margin: 5px;
 }
 
-label {
-    text-align: left;
-    width: 100%;
-    margin: 0;
-    font-size: 0.6em;
-    text-transform: uppercase;
-    font-weight: bold;
-}
-
 .input-container {
     display: flex;
     flex-direction: column;

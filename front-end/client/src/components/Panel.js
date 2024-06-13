@@ -1,6 +1,6 @@
 const Panel = () => {
     return <>
-        <div class="panel"></div>
+        <div className="panel"></div>
     </>
 }
 

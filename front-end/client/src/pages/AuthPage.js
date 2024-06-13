@@ -21,7 +21,7 @@ const AuthPage = () => {
 
     useEffect(() => {
         const fetchData = async () => {
-            const { valid } = await AuthService.status();
+            const { valid, userId } = await AuthService.status();
             if (valid) {
                 navigate("/");
             }
