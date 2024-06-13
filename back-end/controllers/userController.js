@@ -1,3 +1,5 @@
+const UserService = require("../services/userService");
+
 module.exports = { 
   get: async (req, res) => {
     const { userId } = req.params;
@@ -13,5 +15,16 @@ module.exports = {
     }
 
     return res.send({ user });
-  }
+  },
+  tag: async (req, res) => {
+    const { tag } = req.params;
+
+    const user = await UserService.getUserByTag(tag);
+
+    if (!user) {
+      return res.send({ valid: false });
+    }
+
+    return res.send({ userId: user.userId });
+  },
 };

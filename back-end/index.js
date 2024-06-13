@@ -23,6 +23,7 @@ app.use(require("express-rate-limit")(options.rateLimit));
 // routes
 app.use("/auth", require("./routes/authRouter"));
 app.use("/user", require("./routes/userRouter"));
+app.use("/yappies", require("./routes/yappiesRouter"));
 app.use("/session", require("./routes/sessionRouter"));
 
 // start
