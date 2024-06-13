@@ -16,6 +16,9 @@ module.exports = {
                     const {yappieId} = await YappieService.createYappie([req.session.userId, msg.users]);
                     await UserService.updateUser(req.session.userId, { yappieId });
                     break;
+                case "change_status":
+                    await UserService.updateUser(req.session.userId, { status: msg.status });
+                    break;
                 default:
                     break;
             }

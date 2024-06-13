@@ -21,6 +21,9 @@ const userSchema = new mongoose.Schema({
   },
   yappies: {
     type: Array
+  },
+  status: {
+    type: String
   }
 });
 
