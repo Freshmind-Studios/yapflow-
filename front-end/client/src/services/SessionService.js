@@ -10,7 +10,7 @@ const SessionService = () => {
             try {
                 const { valid } = await AuthService.status();
                 if (valid) {
-                    session = new WebSocket(Config.wsURL + "/session/");
+                    session = new WebSocket(Config.wsURL);
 
                     session.onmessage = (event) => {
                         const data = JSON.parse(event.data);
