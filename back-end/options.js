@@ -8,12 +8,12 @@ module.exports = {
         }
     },
     cors: {
-        origin: true,
+        origin: ["http://localhost:3000", "http://100.81.97.77:3000"],
         credentials: true
     },
     morgan: "dev",
     rateLimit: {
-        windowMs: 15 * 60 * 1000,
+        windowMs: 1 * 60 * 1000,
         max: 100,
     }
 }
