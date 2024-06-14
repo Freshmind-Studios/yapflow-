@@ -24,6 +24,7 @@ app.use(require("express-rate-limit")(options.rateLimit));
 app.use("/auth", require("./routes/authRouter"));
 app.use("/user", require("./routes/userRouter"));
 app.use("/yappies", require("./routes/yappiesRouter"));
+app.use("/yaps", require("./routes/yapsRouter"));
 app.use("/session", require("./routes/sessionRouter"));
 
 // start

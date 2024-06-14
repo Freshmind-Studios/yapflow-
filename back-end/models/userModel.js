@@ -6,6 +6,12 @@ const userSchema = new mongoose.Schema({
     required: true,
     unique: true,
   },
+  username: {
+    type: String
+  },
+  picture: {
+    type: String,
+  },
   password: {
     type: String,
     required: true
@@ -20,6 +26,9 @@ const userSchema = new mongoose.Schema({
     unique: true,
   },
   yappies: {
+    type: Array
+  },
+  yaps: {
     type: Array
   },
   status: {

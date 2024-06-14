@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const userSchema = new mongoose.Schema({
+const yappieSchema = new mongoose.Schema({
     users: {
         type: Array,
         required: true,
@@ -10,4 +10,4 @@ const userSchema = new mongoose.Schema({
     }
 });
 
-module.exports = mongoose.model("Yappie", userSchema);
+module.exports = mongoose.model("Yappie", yappieSchema);
