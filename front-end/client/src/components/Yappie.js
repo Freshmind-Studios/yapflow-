@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import YapService from "../services/YapService";
-import profilePicture from "../media/test-profile.png";
 
 const Yappie = (props) => {
     const [user, setUser] = useState(null);
@@ -30,10 +29,9 @@ const Yappie = (props) => {
 
     return (
         <div className="yappie">
-            <img className="profile-picture" src={profilePicture} alt="" />
-            <div className="yappie-text-container">
-                <span className="user-tag">{user.tag}</span>
-                {console.log(user)}
+            <img className="profile-picture" src={user.picture} alt="" />
+            <div className="text-container">
+                <span className="user-name">{user.tag}</span>
                 <span className="user-status">{
                     (user.status.substring(0, 30) + "...")
 
