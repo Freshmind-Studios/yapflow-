@@ -1,25 +1,35 @@
-# YapFlow: back-end service documentation
+# YapFlow: Back-end Service Documentation
 
-The back-end service of YapFlow is a REST API that provides some key information. To add up to that, it also includes a WebSocket for real-time actions.
+The back-end service of YapFlow is a REST API that provides essential information and includes a WebSocket for real-time actions.
 
 ## Setup
 
-To start, create a `.env` file with the following variables:
+To get started, follow these steps:
 
-`PORT` : tells the server at what server port should it be hosted
+1. Create a `.env` file with the following variables:
+  - `PORT`: Specifies the server port for hosting.
+  - `SECRET`: Used for generating hashes and performing operations that require a secret.
+  - `MONGODB_URI`: Specifies the URI of your MongoDB.
 
-`SECRET` : used for generating hashes and different operations that require a secret
+2. Install the dependencies by running `npm i` assuming you have `npm` installed.
 
-`MONGODB_URI` : the URI of your MongoDB
+3. Start the server using the command `npm start`.
 
-Assuming you have `npm` installed, run `npm i` to install all the dependencies. Once you feel like running the server, run `npm start`.
+## REST API
 
-## Endpoints
+This API is based on session identification. Once you are logged in and the session cookie exists, you can request any endpoint without credentials, just forward the cookie.
 
-`POST /auth`
+### Endpoints
 
-**request body**
+#### AUTH
 
+This route is providing service for the authentication methods.
+
+##### `POST /api/auth`
+
+If the user has a saved session in cookies, the body is not required, and the information will be provided automatically. However, if not, you need to provide this information. If the credentials match any user, that user's information will be returned. If the tag does not exist, a new user will be registered with the provided password.
+
+**Request Body**
 ```json
 {
   "tag": "tag",
@@ -27,8 +37,7 @@ Assuming you have `npm` installed, run `npm i` to install all the dependencies. 
 }
 ```
 
-**response body**
-
+**Response Body**
 ```json
 {
   "sessionId": "sessionId",
@@ -36,53 +45,113 @@ Assuming you have `npm` installed, run `npm i` to install all the dependencies. 
 }
 ```
 
-`body.tag` is the username entered
+##### `DELETE /api/auth`
 
-`body.password` is the password entered
+Clears the cookies to disable automatic authentication. No body is required since you need to be logged in to make this work.
 
-If the user requesting has a saved session in cookies, the body isn't required and the info will be provided automatically. However, if not then you need to provide this info. If the credentails will match any user, that users info will be returned. If the tag does not exist, then it will register one with that password.
+#### USERS
 
-`DELETE /auth`
+This route is forwarding information about users.
 
-Will clear the cookies so that the user is not being automatically authenticated. No body is required, since you need to be logged in to make this work.
+##### `GET /api/users/{userId}`
 
-`GET /users`
+This endpoint returns user information.
 
-**response body**
-
-```json
-["playerId"]
-```
-
-Based off the credentials will return a list of userIds in the user's friends list.
-
-`GET /users/{userId}`
-
-**response body**
+**Response Body**
 
 ```json
 {
   "tag": "tag",
   "name": "name",
   "status": "status",
-  "picture": "picture"
+  "picture": "picture" // base64 format
 }
 ```
 
-This endpoint returns user info. The tag, name and status are strings, picture is a PNG in base64 format.
+#### ME
 
-`GET /chats`
+Route, that has endpoints with the session user preferences and information.
 
-**response body**
+##### `GET /api/me/friends`
+
+Based on the credentials, returns a list of user IDs in the friends list.
+
+**Response Body**
+
+```json
+["userId"]
+```
+##### `GET /api/me/chats`
+
+Based on the current state, returns a list of all your chats.
+
+**Response Body**
 
 ```json
 ["yappieId"]
 ```
 
-Based off your current state, it will return a list of all of your chats.
+##### `GET /api/communities`
 
-`GET /chats/{yappieId}`
+Returns a list of communities the session user is in.
 
-`GET /communities`
+**Response Body**
 
-`GET /communities/{yapId}`
+```json
+["yapId"]
+```
+
+#### CHATS
+
+This route is forwarding the yappies data.
+
+##### `GET /api/chats/{yappieId}`
+
+Returns information about a specific chat.
+
+**Response Body**
+
+```json
+{
+  "users": ["userId", "userId"],  // the members of this yappie (mostly the session user and the friend)
+  "messages": []
+}
+```
+
+#### COMMUNITIES
+
+This route is forwarding the yaps data.
+
+##### `GET /api/communities/{yapId}`
+
+Returns information about a specific community.
+
+**Response Body**
+
+```json
+{
+  "users": ["userId", "userId"], // the members of the yap
+  "zones": [], // different zones including canvas
+  "picture": "picture", // picture of the yap in base64 format
+  "name": "name" // name of the yap
+}
+```
+
+## WEBSOCKET
+
+The WS is on the path `/ws` and adds support for real-time changes from the server and other functionalities.
+
+### CONNECTION
+
+Connection is done by connecting to the following path:
+
+**`/ws/session/{sessionId}`**
+
+The messages are in the following JSON format:
+
+```json
+{
+  "function": "func_name",
+  ... // based off the function, you will add additional info if necessary
+}
+```

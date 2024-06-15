@@ -20,20 +20,13 @@ const userSchema = new mongoose.Schema({
     type: Date,
     default: Date.now,
   },
-  sessionId: {
-    type: String,
-    required: true,
-    unique: true,
-  },
-  yappies: {
-    type: Array
-  },
-  yaps: {
-    type: Array
-  },
   status: {
     type: String
-  }
-});
+  },
+  friends: {
+    type: Array,
+    default: []
+  },
+}, {versionKey: false});
 
 module.exports = mongoose.model("User", userSchema);

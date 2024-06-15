@@ -9,5 +9,8 @@ module.exports = {
         const yappie = await Yappie.create({ users });
 
         return { yappieId: yappie.id };
+    },
+    getChats: async (userId) => {
+        return await Yappie.find({ users: { $all: [userId] } }).distinct("_id");
     }
 }

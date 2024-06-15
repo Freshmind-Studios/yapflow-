@@ -2,8 +2,9 @@ const router = require("express").Router();
 
 router
 	.use("/auth", require("./routes/authRouter"))
-	.use("/user", require("./routes/userRouter"))
-	.use("/yappies", require("./routes/yappiesRouter"))
-	.use("/yaps", require("./routes/yapsRouter"))
+	.use("/users", require("./routes/usersRouter"))
+	.use("/me", require("./routes/meRouter"))
+	.use("/chats", require("./routes/chatsRouter"))
+	.use("/communities", require("./routes/communitiesRouter"))
 
 module.exports = router;

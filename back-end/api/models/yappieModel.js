@@ -8,6 +8,6 @@ const yappieSchema = new mongoose.Schema({
     messages: {
         type: Array,
     }
-});
+}, {versionKey: false});
 
 module.exports = mongoose.model("Yappie", yappieSchema);
