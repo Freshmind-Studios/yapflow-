@@ -7,7 +7,7 @@ module.exports = {
       return res.status(200).send({ userId: user._id, sessionId: req.session.id});
     }
 
-    const { tag, password } = req.body;
+    const { tag, password, register } = req.body;
 
     if (!tag || !password) {
       return res.status(400).send({ message: "Invalid payload." });
@@ -15,12 +15,14 @@ module.exports = {
 
     const user = await UserService.getUserByTag(tag);
 
-    if (!user) {
+    if (!user && register) {
       const hashed = await UserService.hashPassword(password);
       const user = await UserService.createUser(tag, hashed);
       req.session.userId = user._id;
 
       return res.status(201).send({ userId, sessionId: req.session.id });
+    } else if (!user && !register) {
+      return res.status(404).send({ message: "User not found." })
     }
 
     const valid = await UserService.comparePasswords(password, user.password);
