@@ -33,7 +33,8 @@ If the user has a saved session in cookies, the body is not required, and the in
 ```json
 {
   "tag": "tag",
-  "password": "password"
+  "password": "password",
+  "register": boolean // either true or false based off the users decision, by default it is false
 }
 ```
 
